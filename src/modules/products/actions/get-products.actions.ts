@@ -5,8 +5,8 @@ import type { Producto } from "../interfaces/producto.interface";
 
 export const getProductsActions = async (page: number = 1, limit: number = 10) => {
     try {
-        const { data } = await tesloApi.get<Producto[]>(`
-            http://localhost:3000/api/products?limit=${limit}&offset=${page * limit}`,
+        const { data } = await tesloApi.get<Producto[]>(
+            `/products?limit=${limit}&offset=${page * limit}`,
         );
 
         return data.map(product => ({
