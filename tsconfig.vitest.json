@@ -1,4 +1,4 @@
-{
+/* {
   "extends": "./tsconfig.app.json",
   "exclude": [],
   "compilerOptions": {
@@ -7,5 +7,26 @@
 
     "lib": [],
     "types": ["node", "jsdom"]
+  }
+} */
+{
+  "extends": "./tsconfig.app.json",
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.vitest.tsbuildinfo",
+
+    "lib": ["dom", "esnext"],
+    "types": ["node", "jsdom", "vue"],
+
+    "strict": true, // Habilitar comprobaciones estrictas de TypeScript
+    "skipLibCheck": true, // Ignorar la verificación de tipos en archivos de bibliotecas
+    "esModuleInterop": true, // Compatibilidad con exportaciones e importaciones de ES Modules
+    "allowSyntheticDefaultImports": true, // Permitir importaciones de default en CommonJS
+    "moduleResolution": "node", // Resolver módulos de acuerdo con las reglas de Node.js
+    "baseUrl": ".", // Base para las rutas relativas
+    "paths": {
+      "@/*": ["src/*"] // Alias para facilitar las importaciones en Vue
+    }
   }
 }

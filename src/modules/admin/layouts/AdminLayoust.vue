@@ -166,18 +166,18 @@ import { RouterView } from 'vue-router';
         </div>
       </button>
       <div class="flex flex-col flex-grow p-4 overflow-auto">
-        <a
+        <RouterLink
           class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300"
-          href="#"
+          to="/admin"
         >
-          <span class="leading-none">Item 1</span>
-        </a>
-        <a
+          <span class="leading-none">Dashbord</span>
+        </RouterLink>
+        <RouterLink
           class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300"
-          href="#"
+          to="/admin/products"
         >
-          <span class="leading-none">Item 2</span>
-        </a>
+          <span class="leading-none">Productos</span>
+        </RouterLink>
         <a
           class="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300"
           href="#"
@@ -226,7 +226,7 @@ import { RouterView } from 'vue-router';
     </div>
     <div class="flex flex-col flex-grow">
       <div class="flex items-center flex-shrink-0 h-16 px-8 border-b border-gray-300">
-        <h1 class="text-lg font-medium">Page Title</h1>
+        <h1 class="text-lg font-medium">{{ username }}</h1>
         <button
           class="flex items-center justify-center h-10 px-4 ml-auto text-sm font-medium rounded hover:bg-gray-300"
         >
@@ -286,8 +286,11 @@ import { RouterView } from 'vue-router';
     </div>
     <span class="text-sm ml-1 leading-none">@lofiui</span>
   </a>
-  <!-- <div>
-    <h1>admin</h1>
-    <RouterView />
-  </div> -->
 </template>
+
+<script lang="ts">
+import { useAuthStore } from '@/modules/auth/stores/auth.store';
+import { storeToRefs } from 'pinia';
+
+const { username } = storeToRefs(useAuthStore());
+</script>
